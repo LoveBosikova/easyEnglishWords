@@ -1,0 +1,17 @@
+.logo {
+    &__wrap {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        max-width:  20vw;
+    }
+
+    &__img {
+        max-width: 20%;
+    }
+    &__img > img {
+        width: 100%;
+        max-width: 100%;
+    }
+}
