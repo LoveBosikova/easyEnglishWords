@@ -1,3 +1,8 @@
+import React, { useState } from 'react';
+import cn from 'classnames';
+
+//! Не забыть распарсить слова
+
 const Title = (props) => {
     const {word, transcription} = props;
     return (
@@ -10,12 +15,23 @@ const Title = (props) => {
 
 const Translate = (props) => {
     const {translate} = props; 
+    const [showed, setShowed] = useState(false);
+
+    const handleChange = () => {
+        setShowed(!showed);
+    };
+
+    const innerText = showed === false ? translate : 'Показать перевод';
+
+    const classNames = cn('card__text', {
+        'card__text--hidden': showed,
+        'card__text--showen': !showed,
+    });
+
     return (
-        <p className="card__text">{translate}</p>
+        <p className={classNames} onChange={handleChange}>{innerText}</p>
     )
 }
-
-const Body = (props) => <div className="card__body">{props.children}</div>;
 
 export default class Card extends React.Component {
     static Title = Title;

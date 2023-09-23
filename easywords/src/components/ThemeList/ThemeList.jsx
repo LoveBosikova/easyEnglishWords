@@ -4,8 +4,8 @@ import Theme from '../Theme/Theme';
 export default class ThemeList extends React.Component {
     
     createThemesList = () => {
-        const { themes } = this.props;
-        return themes
+        const { data } = this.props;
+        return data
                     .map(({ theme, words }) => <Theme themeName={ theme } wordsNumber={ words.length} key={ theme } />)
     }
     render () {
