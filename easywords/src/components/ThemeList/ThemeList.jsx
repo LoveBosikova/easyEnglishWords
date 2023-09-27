@@ -4,10 +4,11 @@ import Theme from '../Theme/Theme';
 export default class ThemeList extends React.Component {
     
     createThemesList = () => {
-        const { data } = this.props;
+        const { data, clickHandle } = this.props;
         return data
-                    .map(({ theme, words }) => <Theme themeName={ theme } wordsNumber={ words.length} key={ theme } />)
+                    .map(({ theme, words }) => <Theme themeName={ theme } wordsNumber={ words.length } key={ theme } clickHandle={ clickHandle } />)
     }
+
     render () {
         return (
             <>

@@ -21,7 +21,7 @@ const Translate = (props) => {
         setShowed(!showed);
     };
 
-    const innerText = showed === false ? translate : 'Показать перевод';
+    const innerText = showed ? 'Показать перевод' : translate;
 
     const classNames = cn('card__text', {
         'card__text--hidden': showed,
@@ -29,7 +29,7 @@ const Translate = (props) => {
     });
 
     return (
-        <p className={classNames} onChange={handleChange}>{innerText}</p>
+        <p className={classNames} onClick={handleChange}>{innerText}</p>
     )
 }
 
@@ -38,8 +38,9 @@ export default class Card extends React.Component {
     static Translate = Translate;
 
     render() {
+        const {key} = this.props; 
         return (
-            <div className="card">{this.props.children}</div>
+            <div className="card" key={key}>{this.props.children}</div>
         )
     }
 }

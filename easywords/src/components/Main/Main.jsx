@@ -4,11 +4,18 @@ import Card from '../Card/Card';
 
 class CardList extends React.Component {
     render() {
-        const {currentTheme} = this.props;
+        const {currentTheme, data} = this.props;
 
+        
+        const words = data
+                        .filter((i) => currentTheme == i.theme)
+                        .map((theme) => theme.words);
+        
+        console.log(words);
         return (
             <ul className='cardList'>
-                {currentTheme.map(({id, english, transcription, russian}) => {
+                {words.map(({id, english, transcription, russian}) => {
+                    // console.log(english);
                     return (
                         <Card key={id}>
                             <Card.Title word={english} transcription={transcription}></Card.Title>
@@ -25,14 +32,26 @@ class CardList extends React.Component {
 export default class Main extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {isThemeList: true, currentTheme: undefined};
+        this.state = {isThemeList: true, currentTheme: null};
     }
 
+    handleClick = (e) => {
+        // const {data} = this.props;
+        // const currentTheme = data.filter((theme) => theme === e.target.textContent)
+        // console.log(currentTheme);
+        this.setState({currentTheme: e.target.textContent})
+    }
+    
     render() {
-        const { data } = this.props; 
+        const {data} = this.props; 
+        const {currentTheme} = this.state;
+
+        // тут определяем, что же будет отображаться в мейне - или список тем или список слов в конкретной теме
+        const innerMain = currentTheme?  <CardList currentTheme={currentTheme} data={data}/> : <ThemeList data={data} clickHandle={this.handleClick}/>;
+
         return(
             <main>
-                <ThemeList data={data}/>
+                {innerMain}
             </main>
         )
     }
