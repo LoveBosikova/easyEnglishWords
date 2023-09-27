@@ -1,46 +1,35 @@
 import React, { useState } from 'react';
 import cn from 'classnames';
+export default class Card extends React.Component {
+    constructor (props) {
+        super(props);
+        this.state = {showed: false};
+    }
 
-//! Не забыть распарсить слова
-
-const Title = (props) => {
-    const {word, transcription} = props;
-    return (
-        <div className="card__wordWrap">
-            <h2 className="card__title">{word}</h2>
-            <p className="card__transcription">{transcription}</p>
-        </div>
-    )
-}
-
-const Translate = (props) => {
-    const {translate} = props; 
-    const [showed, setShowed] = useState(false);
-
-    const handleChange = () => {
-        setShowed(!showed);
+    handleChange = () => {
+        this.setState({showed: true})
     };
 
-    const innerText = showed ? 'Показать перевод' : translate;
-
-    const classNames = cn('card__text', {
-        'card__text--hidden': showed,
-        'card__text--showen': !showed,
-    });
-
-    return (
-        <p className={classNames} onClick={handleChange}>{innerText}</p>
-    )
-}
-
-export default class Card extends React.Component {
-    static Title = Title;
-    static Translate = Translate;
-
     render() {
-        const {key} = this.props; 
+        const {key, word, transcription, translate} = this.props; 
+        const {showed} = this.state;
+        // console.log(key, word, transcription, translate);
+
+        const innerText = showed ? 'Показать перевод' : translate;
+
+        const classNames = cn('card__text', {
+            'card__text--hidden': showed,
+            'card__text--showen': !showed,
+        });
+
         return (
-            <div className="card" key={key}>{this.props.children}</div>
+            <div className="card" key={key}>
+                <div className="card__wordWrap">
+                    <h2 className="card__title">{word}</h2>
+                    <p className="card__transcription">{transcription}</p>
+                </div>
+                <p className={classNames} onClick={this.handleChange}>{innerText}</p>
+            </div>
         )
     }
 }

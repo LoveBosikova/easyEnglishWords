@@ -2,6 +2,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap');
 
 $main-white: whitesmoke;
+$blue: #00acc1;
+$violet: #543ab7;
+$gradient: linear-gradient(60deg, #543ab7 0%, #00acc1 100%);
+$gradient-backward: linear-gradient(60deg, #00acc1 0%, #543ab7 100%);
+$transition-main: all .5s ease-in;
 
 * {
   font-family: 'Raleway', sans-serif;
@@ -155,7 +160,7 @@ legend {
   display: flex;
   justify-content: space-evenly;
   align-items: flex-start;
-  background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
+  background: linear-gradient(60deg, #543ab7 0%, #00acc1 100%);
 }
 
 .waves {
@@ -188,7 +193,7 @@ legend {
 }
 @keyframes move-forever {
   0% {
-   transform: translate3d(-90px,0,0);
+    transform: translate3d(-90px,0,0);
   }
   100% { 
     transform: translate3d(85px,0,0);
@@ -216,7 +221,7 @@ legend {
 
   &__name {
     font-weight: 600;
-    transition: all .5s ease-in;
+    transition: $transition-main;
 
     &:hover {
       font-size: 26px;
@@ -227,6 +232,30 @@ legend {
     font-weight: 300;
     font-size: 12px;
   }
+}
+
+.btnStudy {
+  padding: .5rem;
+    border-radius: 1rem;
+    background: $gradient; 
+    color: $main-white;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    text-align: center;
+    transition: $transition-main;
+    margin-left: auto;
+    margin-right: auto;
+
+    &:hover {
+      background: $gradient-backward;
+    }
+
+    &__wrap {
+      display: flex;
+      justify-content: center;
+      transition: $transition-main;
+    }
 }
 
 .footer {
