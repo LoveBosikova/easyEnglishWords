@@ -3,10 +3,15 @@ import ThemeList from '../ThemeList/ThemeList';
 import Card from '../Card/Card';
 
 class CardList extends React.Component {
+    constructor (props) {
+        super(props);
+        this.state = {checkedWords: []};
+    }
 
     createCards = (id, english, transcription, russian) => {
         return <Card key={id} word={english} transcription={transcription} translate={russian} />
     }
+
     render() {
         const {currentTheme, data} = this.props;
 
@@ -15,7 +20,7 @@ class CardList extends React.Component {
                         .map((theme) => theme.words)
                         .map((wordsObj) => wordsObj)
 
-        const cardsList = words.map((firstLvl)=> firstLvl.map((word)=> <Card key={word.id} word={word.english} transcription={word.transcription} translate={word.russian} />))
+        const cardsList = words.map((firstLvl)=> firstLvl.map((word)=> <Card id={word.id} word={word.english} transcription={word.transcription} translate={word.russian} />))
 
         return (
             <div className='cardList__wrap'>
@@ -51,8 +56,8 @@ export default class Main extends React.Component {
         const {data} = this.props; 
         const {currentTheme, isThemeList} = this.state;
 
-        const cardListHtml = <div class="cards__wrap">
-            <button onClick={this.clickBackToMain}>Назад</button>
+        const cardListHtml = <div className="cards__wrap">
+            <button className="btn-back" onClick={this.clickBackToMain}>Назад</button>
             <CardList currentTheme={currentTheme} data={data}/>
             </div>
 
