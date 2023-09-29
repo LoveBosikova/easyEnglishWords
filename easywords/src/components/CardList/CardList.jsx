@@ -1,6 +1,9 @@
 import React from 'react';
 import Card from '../Card/Card';
+import CardListToLearn from '../CardListToLearn/CardListToLearn';
 
+
+// ! Добавить состояние у класса: показывает или список слов или учит карточки.
 export default class CardList extends React.Component {
     constructor (props) {
         super(props);
@@ -15,6 +18,11 @@ export default class CardList extends React.Component {
         } else {
             this.setState({checkedWordsIds: [...this.state.checkedWordsIds, id]})
         }
+    }
+    
+    learnWord = (data, chosenIds) => {
+        // сначала отбираем выбранные словаб а затем 
+        <CardListToLearn cardsToLearn={wordsToLearn} />
     }
 
     render() {
