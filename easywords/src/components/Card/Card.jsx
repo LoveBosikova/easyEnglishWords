@@ -5,25 +5,26 @@ export default class Card extends React.Component {
         super(props);
         this.state = {isChecked: false};
     }
-
+    
     handleChange = () => {
         const {isChecked} = this.state;
         this.setState({isChecked: !isChecked});
     };
-    
+
     render() {
-        const {id, word, transcription, translate} = this.props; 
-        console.log(this.state);
+        const {id, word, transcription, translate, chosenWords, onChange} = this.props; 
         return (
             <div className="card" key={id}>
                 <h2 className="card__title">{word}</h2>
                 <p className="card__transcription">{transcription}</p>
                 <p className="card__text">{translate}</p>
-                <input className="card__checkBox" type="checkbox" name="wordToLearn" id="wordToLearnCheckBox" checked={this.state.isChecked} onChange={this.handleChange}/>
+                <input className="card__checkBox" type="checkbox" name="wordToLearn" id="wordToLearnCheckBox" checked={this.state.isChecked} onChange={() => {this.handleChange(); onChange(id)}}/>
             </div>
         )
     }
 }
+
+// тут задел на будущие карточки для показа слова 
 
 // import React, { useState } from 'react';
 // import cn from 'classnames';

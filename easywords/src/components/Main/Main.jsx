@@ -1,40 +1,6 @@
 import React from 'react';
 import ThemeList from '../ThemeList/ThemeList';
-import Card from '../Card/Card';
-
-class CardList extends React.Component {
-    constructor (props) {
-        super(props);
-        this.state = {checkedWords: []};
-    }
-
-    createCards = (id, english, transcription, russian) => {
-        return <Card key={id} word={english} transcription={transcription} translate={russian} />
-    }
-
-    render() {
-        const {currentTheme, data} = this.props;
-
-        const words = data
-                        .filter((i) => currentTheme == i.theme)
-                        .map((theme) => theme.words)
-                        .map((wordsObj) => wordsObj)
-
-        const cardsList = words.map((firstLvl)=> firstLvl.map((word)=> <Card id={word.id} word={word.english} transcription={word.transcription} translate={word.russian} />))
-
-        return (
-            <div className='cardList__wrap'>
-                <ul className='cardList'>
-                    {cardsList}
-                </ul>
-                <div className='btnStudy__wrap'>
-                    <button className='btnStudy'>Учить!</button>
-                </div>
-            </div>
-        )
-    }
-}
-
+import CardList from '../CardList/CardList'
 export default class Main extends React.Component {
     constructor(props) {
         super(props);
@@ -66,7 +32,7 @@ export default class Main extends React.Component {
 
         return(
             <main>
-                {innerMain}
+                    {innerMain}
             </main>
         )
     }
