@@ -10,33 +10,11 @@ export default class CardList extends React.Component {
     // Метод для изменения родительского стейта: если айди слова нет с списке слов на изучение, то добавляем его. 
     // Если айди слова уже есть в нашем списке, то удаляем его. Эту функцию передадим в отдельное слово в списке слов на изучение
     addOrRemoveWordFromStydingList = (id) => {
-        debugger;
-        console.log(this.state.checkedWordsIds);
-        debugger;
         if (this.state.checkedWordsIds.includes(id)) {
-            debugger;
-            const newWords = this.state.checkedWordsIds.filter((checkedId) => checkedId !== id);
-            console.log(newWords);
-            this.setState({checkedWordsIds: newWords});
-            debugger;
+            this.setState({checkedWordsIds: this.state.checkedWordsIds.filter((checkedId) => checkedId !== id)});
         } else {
-            debugger;
-            const newWords = this.state.checkedWordsIds.push(id);
-            console.log(newWords);
-            this.setState({checkedWordsIds: newWords})
-            debugger;
+            this.setState({checkedWordsIds: [...this.state.checkedWordsIds, id]})
         }
-    }
-
-    createCards = (id, english, transcription, russian) => {
-        return <Card 
-                    key={id} 
-                    word={english} 
-                    transcription={transcription} 
-                    translate={russian} 
-                    chosenWords={this.state.checkedWordsIds} 
-                    onChange={this.addOrRemoveWordFromStydingList}
-                    />
     }
 
     render() {
