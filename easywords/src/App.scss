@@ -303,6 +303,32 @@ legend {
   }
 }
 
+.cardListToLearn {
+  max-width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.cardToLearn {
+  &__title {
+    font-size: 60px;
+    font-weight: 800;
+    margin-bottom: .1rem;
+  }
+
+  &__transcription {
+    color:#28343481;
+    font-size: 18px;
+    margin-bottom: .1rem;
+  }
+}
+
 .footer {
   position: fixed;
   bottom: 0;

@@ -7,7 +7,7 @@ import CardListToLearn from '../CardListToLearn/CardListToLearn';
 export default class CardList extends React.Component {
     constructor (props) {
         super(props);
-        this.state = {checkedWordsIds: []};
+        this.state = {checkedWordsIds: [], isChoosing: true};
     }
 
     // Метод для изменения родительского стейта: если айди слова нет с списке слов на изучение, то добавляем его. 
@@ -19,14 +19,14 @@ export default class CardList extends React.Component {
             this.setState({checkedWordsIds: [...this.state.checkedWordsIds, id]})
         }
     }
-    
-    learnWord = (data, chosenIds) => {
-        // сначала отбираем выбранные словаб а затем 
-        <CardListToLearn cardsToLearn={wordsToLearn} />
+
+    startStudy = () => {
+        this.setState({isChoosing: false})
     }
 
     render() {
         const {currentTheme, data} = this.props;
+        const { checkedWordsIds, isChoosing } = this.state;
 
         const words = data
                         .filter((i) => currentTheme == i.theme)
@@ -42,14 +42,20 @@ export default class CardList extends React.Component {
                                                                         onChange={this.addOrRemoveWordFromStydingList} 
                                                                         />))
 
+        const cardListPreview = <>
+                                    <ul className='cardList'>
+                                        {cardsList}
+                                    </ul>
+                                    <div className='btnStudy__wrap'>
+                                    <button className='btnStudy' onClick={this.startStudy}>Учить!</button>
+                                    </div>
+                                </>
+
+        const cardListToStudy = <CardListToLearn chosenCardsIds={checkedWordsIds} dataCards={words}/>
+        
         return (
             <div className='cardList__wrap'>
-                <ul className='cardList'>
-                    {cardsList}
-                </ul>
-                <div className='btnStudy__wrap'>
-                    <button className='btnStudy'>Учить!</button>
-                </div>
+                {isChoosing ? cardListPreview : cardListToStudy}
             </div>
         )
     }

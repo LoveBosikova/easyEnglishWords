@@ -40,14 +40,6 @@ export default [
                     "tags_json":"[\"u0433u0430u0440u0440u0438 u043fu043eu0442u0442u0435u0440.\"]"
             },
                 {
-                    "id":"14355",
-                    "english":"ability",
-                    "transcription":"[əˈbɪləti]",
-                    "russian":"умение, способность",
-                    "tags":"гарри поттер",
-                    "tags_json":"[\"u0433u0430u0440u0440u0438 u043fu043eu0442u0442u0435u0440.\"]"
-                },
-                {
                     "id":"14356",
                     "english":"air",
                     "transcription":"[eə]",
