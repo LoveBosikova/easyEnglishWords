@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/easyEnglishWords/static/css/main.9cd33676.css",
-    "main.js": "/easyEnglishWords/static/js/main.6972f909.js",
+    "main.css": "/easyEnglishWords/static/css/main.acc0c7de.css",
+    "main.js": "/easyEnglishWords/static/js/main.efa4674c.js",
     "static/js/787.d95b009a.chunk.js": "/easyEnglishWords/static/js/787.d95b009a.chunk.js",
     "static/media/logo.png": "/easyEnglishWords/static/media/logo.decd010c1adf6fb29b3b.png",
     "index.html": "/easyEnglishWords/index.html",
-    "main.9cd33676.css.map": "/easyEnglishWords/static/css/main.9cd33676.css.map",
-    "main.6972f909.js.map": "/easyEnglishWords/static/js/main.6972f909.js.map",
+    "main.acc0c7de.css.map": "/easyEnglishWords/static/css/main.acc0c7de.css.map",
+    "main.efa4674c.js.map": "/easyEnglishWords/static/js/main.efa4674c.js.map",
     "787.d95b009a.chunk.js.map": "/easyEnglishWords/static/js/787.d95b009a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9cd33676.css",
-    "static/js/main.6972f909.js"
+    "static/css/main.acc0c7de.css",
+    "static/js/main.efa4674c.js"
   ]
 }
