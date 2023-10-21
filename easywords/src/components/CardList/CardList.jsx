@@ -21,6 +21,10 @@ export default class CardList extends React.Component {
     }
 
     startStudy = () => {
+        if (this.state.checkedWordsIds.length === 0) {
+            alert ('Выберите хотя бы одно слово для заучивания');
+            return;
+        }
         this.setState({isChoosing: false})
     }
 

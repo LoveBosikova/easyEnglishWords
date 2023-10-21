@@ -8,18 +8,22 @@ class CardToLearn extends React.Component {
     }
 
     handleChange = () => {
-        this.setState({showed: true})
+        const showed = this.state.showed;
+        this.setState({showed: !showed})
     };
 
-    componentDidMount () {
-        this.setState({showed: false})
+    componentDidUpdate(prevProps) {
+        // Популярный пример (не забудьте сравнить пропсы):
+        if (this.props.id !== prevProps.id) {
+            this.setState({showed: false});
+        }
     }
 
     render() {
         const {id, word, transcription, translate} = this.props; 
         const {showed} = this.state;
 
-        const innerText = !showed ? 'Показать перевод' : translate;
+        const innerText = showed ? translate : 'Показать перевод';
 
         const classNames = cn('card__text', {
             'card__text--hidden': showed,
@@ -99,9 +103,6 @@ export default class CardListToLearn extends React.Component {
                             <path d="M7.293 4.707 14.586 12l-7.293 7.293 1.414 1.414L17.414 12 8.707 3.293 7.293 4.707z"/>
                         </svg>
                     </div>
-                </div>
-                <div className='btnStudy__wrap'>
-                    <button className='btnStudy'>Закончить</button>
                 </div>
             </>
         )

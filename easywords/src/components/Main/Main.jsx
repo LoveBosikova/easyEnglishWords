@@ -1,6 +1,9 @@
 import React from 'react';
 import ThemeList from '../ThemeList/ThemeList';
-import CardList from '../CardList/CardList'
+import CardList from '../CardList/CardList';
+import {
+    Link
+  } from "react-router-dom";
 export default class Main extends React.Component {
     constructor(props) {
         super(props);
